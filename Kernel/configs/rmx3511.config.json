@@ -3,8 +3,8 @@
         "kernelSource": {
             "name": "Realme C35",
             "repo": "https://github.com/realme-kernel-opensource/realme_C31_C33_C35_narzo50A-Prime-AndroidT-kernel-source",
-            "branch": "master",
-            "device": "rmx3511",
+            "branch": "main",
+            "device": "sprd_qogirl6",
             "defconfig": "arm/arch64/configs/sprd_qogirl6_defconfig"
         },
         "toolchains": [
