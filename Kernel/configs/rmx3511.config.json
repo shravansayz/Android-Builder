@@ -4,8 +4,8 @@
             "name": "Realme_C35",
             "repo": "https://github.com/rifsxd/realme_C31_C33_C35_narzo50A-Prime-AndroidT-NEW-kernel-source",
             "branch": "master",
-            "device": "sprd_sharkl3",
-            "defconfig": "sprd_sharkl3_defconfig"
+            "device": "unisoc_fuzz_ums512",
+            "defconfig": "unisoc_fuzz_ums512_defconfig"
         },
         "toolchains": [
             {
