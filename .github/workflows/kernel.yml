@@ -78,7 +78,7 @@ jobs:
       - name: 📐 Set swap to 10G
         uses: pierotofy/set-swap-space@master
         with:
-          swap-size-gb: 10
+          swap-size-gb: 16
 
       # This action checks-out your CONFIGSitory under $GITHUB_WORKSPACE, so your workflow can access it.
       - name: 😄 Checkout
@@ -128,7 +128,7 @@ jobs:
 
       - name: 🌟 Clone kernel source => (${{ env.KERNEL_REPO }})
         run: |
-          git clone --recursive --depth=1 -j $(nproc) --branch ${{ env.KERNEL_BRANCH }} ${{ env.KERNEL_REPO }} ${{ env.KERNEL_NAME }}
+          git clone --recursive --depth=1 -j$(nproc) --branch ${{ env.KERNEL_BRANCH }} ${{ env.KERNEL_REPO }} ${{ env.KERNEL_NAME }}
           # tree ${{ env.KERNEL_NAME }}
 
       - name: 💫 Get toolchains
@@ -242,11 +242,7 @@ jobs:
           fi
 
           # Apply new KernelSU patches
-          curl -LSs "https://raw.githubusercontent.com/tiann/KernelSU/main/kernel/setup.sh" | bash -s v0.9.5
-
-          echo -e "CONFIG_KPROBES=y" >> arch/${{ env.ARCH }}/configs/${{ env.KERNEL_DEFCONFIG_PATH }}
-          echo -e "CONFIG_HAVE_KPROBES=y" >> arch/${{ env.ARCH }}/configs/${{ env.KERNEL_DEFCONFIG_PATH }}
-          echo -e "CONFIG_KPROBE_EVENTS=y" >> arch/${{ env.ARCH }}/configs/${{ env.KERNEL_DEFCONFIG_PATH }}
+          curl -LSs "https://raw.githubusercontent.com/rifsxd/KernelSU/main/kernel/setup.sh" | bash -s next
 
           cat arch/${{ env.ARCH }}/configs/${{ env.KERNEL_DEFCONFIG_PATH }}
 
@@ -299,7 +295,7 @@ jobs:
           ARGS: ${{ steps.generate-args.outputs.ARGS }}
         run: |
           echo "🤔 PATH Variable: $PATH"
-          export KBUILD_BUILD_HOST=Github-Action
+          export KBUILD_BUILD_HOST=ci-buildbot
           export KBUILD_BUILD_USER=$(echo ${{ github.actor }} | tr A-Z a-z)
           make ${{ env.ARGS }} ${{ env.KERNEL_DEFCONFIG_PATH }}
           make ${{ env.ARGS }}
@@ -378,11 +374,8 @@ jobs:
             git clone --recursive --depth=1 -j $(nproc) --branch $ANYKERNEL_BRANCH $ANYKERNEL_REPO AnyKernel3
             echo "🤔 Use custom AnyKernel3 => ($ANYKERNEL_REPO)"
           else
-            git clone --recursive --depth=1 -j $(nproc) https://github.com/osm0sis/AnyKernel3 AnyKernel3
-            sed -i 's/do.devicecheck=1/do.devicecheck=0/g' AnyKernel3/anykernel.sh
-            sed -i 's!BLOCK=/dev/block/platform/omap/omap_hsmmc.0/by-name/boot;!BLOCK=auto;!g' AnyKernel3/anykernel.sh
-            sed -i 's/is_slot_device=0;/is_slot_device=auto;/g' AnyKernel3/anykernel.sh
-            echo "🤔 Use origin Anykernel3 => (https://github.com/osm0sis/AnyKernel3)"
+            git clone --recursive --depth=1 -j $(nproc) https://github.com/rifsxd/AnyKernel3 AnyKernel3
+            echo "🤔 Use origin Anykernel3 => (https://github.com/rifsxd/AnyKernel3)"
           fi
 
 
