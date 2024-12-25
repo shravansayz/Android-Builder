@@ -11,7 +11,7 @@
             {
                 "repo": "https://github.com/kdrag0n/proton-clang.git",
                 "branch": "master",
-                "name": "proton-clang",
+                "name": "prebuilts/clang/host/linux-x86/clang-proton",
                 "binaryEnv": [
                     "bin"
                 ]
@@ -46,6 +46,6 @@
             "release": true
         },
         "enableKernelSU": true,
-        "enableLXC": true
+        "enableLXC": false
     }
 ]
