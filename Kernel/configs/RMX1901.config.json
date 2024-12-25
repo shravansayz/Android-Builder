@@ -1,17 +1,17 @@
 [
     {
         "kernelSource": {
-            "name": "realme_c35",
-            "repo": "https://github.com/rifsxd/nyx_android_kernel_realme_c35",
-            "branch": "dev",
-            "device": "realme_c35",
-            "defconfig": "realme_c35_nyx_defconfig"
+            "name": "realme_sdm710",
+            "repo": "https://github.com/shravansayz/kernel_realme_sdm710.git",
+            "branch": "wip",
+            "device": "RMX1901",
+            "defconfig": "sdm670-perf_defconfig"
         },
         "toolchains": [
             {
-                "repo": "https://github.com/rifsxd/android_prebuilts_clang_kernel_linux-x86_clang-r416183b",
-                "branch": "lineage-20.0",
-                "name": "clang",
+                "repo": "https://github.com/kdrag0n/proton-clang.git",
+                "branch": "master",
+                "name": "proton-clang",
                 "binaryEnv": [
                     "bin"
                 ]
