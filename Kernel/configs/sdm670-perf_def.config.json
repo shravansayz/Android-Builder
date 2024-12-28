@@ -3,7 +3,7 @@
         "kernelSource": {
             "name": "sdm670-perf_defconfig",
             "repo": "https://github.com/shravansayz/kernel_realme_sdm710.git",
-            "branch": "15",
+            "branch": "14-ksu",
             "device": "sdm710",
             "defconfig": "sdm670-perf_defconfig"
         },
